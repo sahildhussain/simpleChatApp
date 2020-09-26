@@ -19,17 +19,19 @@ io.on('connection', (socket) => {
     
     socket.username = 'Anonymous'
 
+    //received from chat.js
     socket.on('change_username', (data)=>{
         console.log(data.username)
         socket.username = data.username
     })
 
     socket.on('new_message', (data)=>{
-        console.log(data.message)
+        //Broadcasting message
         io.sockets.emit('new_message', {message: data.message, username: socket.username})
     })
 
     socket.on('typing', (data) => {
+        //broadcasting to all sockets except self
     	socket.broadcast.emit('typing', {username : socket.username})
     })
 })

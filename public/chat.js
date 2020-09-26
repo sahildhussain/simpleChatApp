@@ -7,6 +7,7 @@ $(function() {
 	var send_message = $("#send_message")
 	var change_username = $("#change_username")
 	var chatroom = $("#chatroom")
+	var feedback = $("#feedback")
 
 	//Emit message
 	send_message.click(() => {
@@ -23,7 +24,7 @@ $(function() {
 
 	//Emit a username
 	change_username.click(() => {
-		console.log("Hi")
+		//call will go to App.js
 		socket.emit("change_username", { username: username.val() })
 	})
 
