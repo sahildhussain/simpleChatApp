@@ -28,4 +28,8 @@ io.on('connection', (socket) => {
         console.log(data.message)
         io.sockets.emit('new_message', {message: data.message, username: socket.username})
     })
+
+    socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {username : socket.username})
+    })
 })
